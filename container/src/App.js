@@ -1,16 +1,19 @@
 import React from 'react';
+import { BrowserRouter } from "react-router-dom";
 import { mount } from "marketing/MarketingApp";
 import MarketingApp from "./components/MarketingApp";
+import Header from "./components/Header";
 
 
 console.log(mount);
 
 export default function App(props) {
     return (
-        <div>
-            <h1>Hello from Container wiht workflow fix</h1>
-            <hr />
-            <MarketingApp />
-        </div>
+        <BrowserRouter>
+            <div>
+                <Header />
+                <MarketingApp />
+            </div>
+        </BrowserRouter>
     )
 }
