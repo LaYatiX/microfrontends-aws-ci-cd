@@ -2,22 +2,26 @@ import React, { useEffect } from 'react';
 import { Switch, Route, Router } from "react-router-dom";
 import { StylesProvider, createGenerateClassName } from "@material-ui/core/styles";
 
-import Landing from "./components/Landing";
-import Pricing from "./components/Pricing";
 
+import SignUp from "./components/Signup";
+import SignIn from './components/Signin';
 
 const generateClassName = createGenerateClassName({
-    productionPrefix: 'ma'
+    productionPrefix: 'au'
 })
 
-export default function App({ history }) {
+export default function App({ history, onSignIn }) {
     return (
         <div>
             <StylesProvider generateClassName={generateClassName}>
                 <Router history={history}>
                     <Switch>
-                        <Route exact path="/pricing" component={Pricing} />
-                        <Route exact path="/" component={Landing} />
+                        <Route exact path="/auth/signin/">
+                            <SignIn onSignIn={onSignIn} />
+                        </Route>
+                        <Route exact path="/auth/signup/">
+                            <SignUp onSignIn={onSignIn} />
+                        </Route>
                     </Switch>
                 </Router>
             </StylesProvider>
